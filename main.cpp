@@ -15,7 +15,7 @@ cccd: ma so ca nhan
 typedef struct hanhkhach
 {
     string cccd;
-    char name[30];
+    string name;
     char sex;
     int month;
     int age;
@@ -38,7 +38,7 @@ int search(struct hanhkhach hk[], string id,int biendem)//ham phu de ham trong h
 void clean(struct hanhkhach hk[],int index)//clear du lieu
 {
     hk[index].cccd ="";
-    strcpy(hk[index].name,"");
+    hk[index].name ="";
     hk[index].sex =NULL;
     hk[index].age = 0;
     hk[index].month = 0;
@@ -71,9 +71,12 @@ again:
     }
 //nhap thong tin
     cout<<"Nhap ten hanh khach: ";
-    cin>>hk[biendem].name;
-    cout<<"Nhap gioi tinh cua hanh khach (F hoac M):";
+    cin.ignore();//code de nhap ten co cach
+    getline(cin, hk[biendem].name);
+    cout<<"Nhap gioi tinh cua hanh khach (F hoac M): ";
     cin>>hk[biendem].sex;
+    cout<<"Nhap tuoi cua hanh khach: ";
+     cin>>hk[biendem].age;
     cout<<"Nhap thang muon dang ky ve: ";
     cin>>hk[biendem].month;
     cout<<"Nhap hang ve muon dang ky(1: lien tuyen, 0: co dinh): ";
@@ -152,7 +155,11 @@ void capnhat(struct hanhkhach hk[],int biendem) //Chinh sua thong tin khach hang
     int column_index;
     cout<<"Nhap ID cua hanh khach: ";
     cin>>id;
-    cout<<"Muc muon cap nhat ?: ";
+    cout<<"1. Ho va ten\n";
+    cout<<"2. Gioi tinh\n";
+    cout<<"3. Tuoi\n";
+    cout<<"4. Hang ve\n";
+    cout<<"Muc muon cap nhat : ";
     cin>>column_index;
 
     int index = search(hk, id,biendem);
@@ -178,7 +185,7 @@ void capnhat(struct hanhkhach hk[],int biendem) //Chinh sua thong tin khach hang
         }
         else if (column_index == 4)
         {
-            cout<<"Nhap diem hang ve: ";
+            cout<<"Nhap hang ve: ";
             cin>>hk[index].type;
         }
 
@@ -219,7 +226,7 @@ int main()
     char confirm;
     do
     {
-        cout<<"\nNhap lua chon cua ban (1-9): ";
+        cout<<"\nNhap lua chon cua ban (0-6): ";
         cin>>luachon;
 
         switch(luachon)
