@@ -92,25 +92,21 @@ void nhapfile(hanhkhach hk[], int& biendem)
         cout << "Khong the mo file.\n";
     }
 }
-int search(struct hanhkhach hk[], string id,int biendem)//ham phu de ham trong ham
+int search(struct hanhkhach hk[], string id, int biendem)
 {
-
-    int found =-1;
-    for (int i = 0; i < biendem && found==-1; i++)
+    for (int i = 0; i < biendem; i++)
     {
-
-        if (hk[i].cccd == id) found=i;
-
-        else found=-1 ;
+        if (hk[i].cccd == id)  // Nếu tìm thấy CCCD khớp
+            return i;  // Trả về chỉ số của hành khách
     }
 
-    return found;
+    return -1;  // Nếu không tìm thấy hành khách, trả về -1
 }
 void clean(struct hanhkhach hk[],int index)//clear du lieu
 {
     hk[index].cccd ="";
     hk[index].name ="";
-    hk[index].sex =NULL;
+    hk[index].sex =" ";
     hk[index].age = 0;
     hk[index].month = 0;
     hk[index].type = 0;
