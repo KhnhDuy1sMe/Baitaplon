@@ -92,11 +92,10 @@ void xuat_file(hanhkhach hk[], int biendem)
             }
         }
         file.close();
-        cout << "Du lieu da duoc xuat ra file 'hanhkhach.csv'.\n";
     }
     else
     {
-        cout << "Loi xuat file.\n";
+        cout << "ERROR!\n";
     }
 }
 void nhap_file(hanhkhach hk[], int& biendem)
@@ -132,11 +131,10 @@ void nhap_file(hanhkhach hk[], int& biendem)
             }
         }
         file.close();
-        cout << "Du lieu da duoc nhap \n";
     }
     else
     {
-        cout << "Khong the mo file.\n";
+        cout << "ERROR!\n";
     }
 }
 
@@ -221,14 +219,14 @@ void danhsach(struct hanhkhach hk[], int biendem) //Hien thi bang thong tin khac
 {
     int i=0;
     cout<<left<<setw(14)<<"ID"<<setw(30)<<"Ho va ten"<<setw(12)<<"Gioi tinh"<<setw(7)<<"Tuoi"<<setw(9)<<"Hang ve"<<setw(7)<<"Thang"<<setw(7) << "Nam"<<"\n";
-    cout<<"=============================================================================\n";
+    cout<<"====================================================================================\n";
     while(i<biendem)
     {
         if(hk[i].cccd!="")
         {
             cout<<left<<setw(14)<<maskID(hk[i].cccd) <<setw(30)<<hk[i].name<<setw(12)
                 <<hk[i].sex;
-            cout<<setw(7)<<hk[i].age<<setw(9)<<hk[i].type<<setw(7)<<hk[i].month<<setw(7) << hk[i].year ;
+            cout<<setw(7)<<hk[i].age<<setw(9)<<hk[i].type<<setw(8)<<hk[i].month<<setw(7) << hk[i].year ;
             cout<<"\n";
         }
         i=i+1;
@@ -326,7 +324,7 @@ void cap_nhat(struct hanhkhach hk[],int biendem) //Chinh sua thong tin khach han
 
 void giahan(struct hanhkhach hk[], int biendem)
 {
-     string id;
+    string id;
     int thang_them, nam_them;
 
     cout << "Nhap ID cua hanh khach: ";
@@ -373,9 +371,11 @@ void tim_kiem(struct hanhkhach hk[], int biendem)
     if (index != -1)
     {
         //Hien thi thong tin khach hang
+        cout<<left<<setw(14)<<"ID"<<setw(30)<<"Ho va ten"<<setw(12)<<"Gioi tinh"<<setw(7)<<"Tuoi"<<setw(9)<<"Hang ve"<<setw(7)<<"Thang"<<setw(7) << "Nam"<<"\n";
+        cout<<"====================================================================================\n";
         cout<<left<<setw(14)<<hk[index].cccd<<setw(30)<<hk[index].name<<setw(12)
             <<hk[index].sex;
-        cout<<setw(7)<<hk[index].age<<setw(9)<<hk[index].type<<setw(7)<<hk[index].month;
+        cout<<setw(7)<<hk[index].age<<setw(9)<<hk[index].type<<setw(8)<<hk[index].month<<setw(7) << hk[index].year;
         cout<<"\n";
     }
     else cout<<"Hanh khach khong ton tai.";
