@@ -207,7 +207,7 @@ again:
         cout<<"Cua ban het 140.000! \n";
         break;
     case 0:
-        cout<<"Cua ban het 80.000! \n";
+        cout<<"Cua ban het 100.000! \n";
         break;
     default:
         cout<<"Sai gia tri! \n";
@@ -325,7 +325,7 @@ void cap_nhat(struct hanhkhach hk[],int biendem) //Chinh sua thong tin khach han
 void giahan(struct hanhkhach hk[], int biendem)
 {
     string id;
-    int thang_them, nam_them;
+    int thang_them;
 
     cout << "Nhap ID cua hanh khach: ";
     cin >> id;
@@ -335,18 +335,15 @@ void giahan(struct hanhkhach hk[], int biendem)
     {
         cout << "Nhap so thang muon gia han: ";
         cin >> thang_them;
-        cout << "Nhap so nam muon gia han: ";
-        cin >> nam_them;
 
-        if (thang_them > 0 || nam_them > 0)
+        if (thang_them > 0)
         {
             hk[index].month += thang_them;
-            hk[index].year += nam_them;
 
-            if (hk[index].month > 12)
+            while (hk[index].month > 12)
             {
-                hk[index].year += hk[index].month / 12;
-                hk[index].month %= 12;
+                hk[index].month -= 12;
+                hk[index] .year ++;
             }
 
             cout << "Ve cua hanh khach da duoc gia han den thang " << hk[index].month
@@ -354,7 +351,7 @@ void giahan(struct hanhkhach hk[], int biendem)
         }
         else
         {
-            cout << "So thang va so nam gia han phai lon hon 0.\n";
+            cout << "So thang gia han phai lon hon 0.\n";
         }
     }
     else
@@ -399,7 +396,7 @@ void thong_ke(struct hanhkhach hk[], int biendem)
         if (hk[i].type == 0)
         {
             so_ve_co_dinh[year - nam_dau][month]++;
-            tong_doanh_thu[year - nam_dau][month] += 80000;
+            tong_doanh_thu[year - nam_dau][month] += 100000;
         }
         else if (hk[i].type == 1)
         {
